@@ -6,11 +6,11 @@ using UnityEngine;
 public class BlockColorer : MonoBehaviour
 {
     private Renderer blockRenderer;
-    private Durability DurabilityComponent;
+    private DurabilityIndicator DurabilityComponent;
     private void Start()
     {
         blockRenderer = gameObject.GetComponent<Renderer>();
-        DurabilityComponent = gameObject.GetComponent<Durability>();
+        DurabilityComponent = gameObject.GetComponent<DurabilityIndicator>();
     }
     private void FixedUpdate()
     {
