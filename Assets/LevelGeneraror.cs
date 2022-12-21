@@ -26,6 +26,7 @@ public class LevelGeneraror : MonoBehaviour
         {
             GenerateRow(i, segmentNumber);
         }
+
     }
 
     private void GenerateRow(int rowNumber, int segmentNumber)
@@ -34,19 +35,30 @@ public class LevelGeneraror : MonoBehaviour
         for (int i = 0; i < 5; i++)
         {
             Vector3 position = CalculatePosition(i, rowNumber, segmentNumber);
-
+            if (rowNumber == 20)
+            {
+                Instantiate(BlockPrefab, position, Quaternion.identity, gameObject.transform);
+                continue;
+            }
             switch(rnd.Next(40))
             {
                 case 0:
-                    Instantiate(FoodPrefab, position, Quaternion.identity, gameObject.transform);
+                    GenerateObject(BlockPrefab, position, 2);
                     break;
                 case 1:
-                    Instantiate(BlockPrefab, position, Quaternion.identity, gameObject.transform);
+                    GenerateObject(FoodPrefab, position, 2);
                     break;
                 default:
                     break;
             }
         }
+    }
+
+    private void GenerateObject(GameObject prefab, Vector3 position, int durability)
+    {
+        GameObject jbj = Instantiate(prefab, position, Quaternion.identity, gameObject.transform);
+        Durability cmp = jbj.GetComponent(typeof(Durability)) as Durability;
+        cmp.durability = durability;
     }
 
     private Vector3 CalculatePosition(int rowNumber, int lineNumber, int segmentNumber)
