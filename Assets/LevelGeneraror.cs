@@ -22,11 +22,27 @@ public class LevelGeneraror : MonoBehaviour
 
     private void GenerateSegment(int segmentNumber)
     {
-        for (int i = 0; i < 21; i++)
+        for (int i = 0; i < 20; i++)
         {
             GenerateRow(i, segmentNumber);
         }
+        GenerateWall(segmentNumber);
 
+    }
+
+    private void GenerateWall(int segmentNumber)
+    {
+        System.Random rnd = new System.Random();
+        int smallBlockLine = rnd.Next(5);
+
+        for (int i = 0; i < 5; i++)
+        {
+            Vector3 position = CalculatePosition(i, 20, segmentNumber);
+            int maxDurability;
+
+            maxDurability = (i == smallBlockLine) ? 4 : 100;
+            GenerateObject(BlockPrefab, position, rnd.Next(1, maxDurability));
+        }
     }
 
     private void GenerateRow(int rowNumber, int segmentNumber)
@@ -35,18 +51,13 @@ public class LevelGeneraror : MonoBehaviour
         for (int i = 0; i < 5; i++)
         {
             Vector3 position = CalculatePosition(i, rowNumber, segmentNumber);
-            if (rowNumber == 20)
-            {
-                Instantiate(BlockPrefab, position, Quaternion.identity, gameObject.transform);
-                continue;
-            }
-            switch(rnd.Next(40))
+            switch(rnd.Next(30))
             {
                 case 0:
-                    GenerateObject(BlockPrefab, position, 2);
+                    if (rowNumber != 19 && rowNumber != 0) GenerateObject(BlockPrefab, position, rnd.Next(1, 100)); // condition to prevent big block from appearing around small block
                     break;
                 case 1:
-                    GenerateObject(FoodPrefab, position, 2);
+                    GenerateObject(FoodPrefab, position, rnd.Next(1, 6));
                     break;
                 default:
                     break;

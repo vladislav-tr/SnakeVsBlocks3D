@@ -1,8 +1,10 @@
+using Newtonsoft.Json.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Windows;
 
 public class Durability : MonoBehaviour
 {
@@ -12,7 +14,7 @@ public class Durability : MonoBehaviour
     {
         int numbersCount = transform.childCount;
         for (int i = 0; i < numbersCount; ++i)
-            Numbers.Add(gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshPro>());
+            Numbers.Add(gameObject.transform.GetChild(i).gameObject.GetComponent<TextMeshPro>());
     }
     private void FixedUpdate()
     {
