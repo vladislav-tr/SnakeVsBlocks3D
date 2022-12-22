@@ -14,6 +14,7 @@ public class DurabilityIndicator : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (durability == 0) Destroy(gameObject);
         foreach (TextMeshPro number in Numbers)
         {
             number.text = durability.ToString();

@@ -9,8 +9,8 @@ public class BlockColorer : MonoBehaviour
     private DurabilityIndicator DurabilityComponent;
     private void Start()
     {
-        blockRenderer = gameObject.GetComponent<Renderer>();
-        DurabilityComponent = gameObject.GetComponent<DurabilityIndicator>();
+        blockRenderer = GetComponent<Renderer>();
+        DurabilityComponent = GetComponent<DurabilityIndicator>();
     }
     private void FixedUpdate()
     {
