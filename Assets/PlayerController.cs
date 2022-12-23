@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
 
         float leftBound  = getClosestPoint(leftRay1, leftRay2).x + 0.3f;
         float rightBound = getClosestPoint(rightRay1, rightRay2).x - 0.3f;
-        float frontBound = getClosestPoint(frontRay1, frontRay2).z - 0.3f;
+        float frontBound = getClosestPoint(frontRay1, frontRay2).z - 0.275f;
 
         newPosition = transform.position;
 
