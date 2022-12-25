@@ -55,7 +55,7 @@ public class LevelGeneraror : MonoBehaviour
             switch(rnd.Next(30))
             {
                 case 0:
-                    //if (rowNumber != 19 && rowNumber != 0) GenerateObject(BlockPrefab, position, rnd.Next(1, 100)); // condition to prevent big block from appearing around small block
+                    if (rowNumber != 19 && rowNumber != 0) GenerateObject(BlockPrefab, position, rnd.Next(1, 100)); // condition to prevent big block from appearing around small block
                     break;
                 case 1:
                     GenerateObject(FoodPrefab, position, rnd.Next(1, 6));

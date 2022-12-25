@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
             float delta = (Input.mousePosition.x - prevMousePosition) / 100;
             newPosition.x = Mathf.Clamp(transform.position.x + delta, leftBound, rightBound);
         }
-        newPosition.z = Mathf.Clamp(transform.position.z + 2f * Time.fixedDeltaTime, 0, frontBound);
+        newPosition.z = Mathf.Clamp(transform.position.z + 5f * Time.fixedDeltaTime, 0, frontBound);
 
         transform.position = newPosition;
         prevMousePosition = Input.mousePosition.x;
