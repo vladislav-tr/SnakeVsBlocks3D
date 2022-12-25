@@ -28,13 +28,13 @@ public class BlockDestructor : MonoBehaviour
             if (transform.position.z - other.transform.position.z < 0.75) return;
 
             selfDurabilityIndicator.durability -= 1;
+            snakeDurabilityIndicator.durability -= 1;
+
             if (selfDurabilityIndicator.durability == 0)
             {
                 Destroy(gameObject);
                 return;
             }
-
-            snakeDurabilityIndicator.durability -= 1;
             if (snakeDurabilityIndicator.durability == 0)
             {
                 playerController.OnDie();
