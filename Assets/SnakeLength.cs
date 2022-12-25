@@ -20,12 +20,12 @@ public class SnakeLength : MonoBehaviour
         int growth = durabilityIndicator.durability/5 - previousLength;
         if (growth == 0) return;
 
-        lastPart = transform.parent.GetChild(transform.parent.childCount - 1);
+        lastPart = transform.GetChild(transform.childCount - 1);
 
         if (growth > 0)
         {
             Vector3 position = new Vector3(lastPart.position.x, lastPart.position.y, lastPart.position.z - 0.6f);
-            Instantiate(snakePartPrefab, position, Quaternion.identity, gameObject.transform.parent);
+            Instantiate(snakePartPrefab, position, Quaternion.identity, transform);
         }
         if (growth < 0)
         {

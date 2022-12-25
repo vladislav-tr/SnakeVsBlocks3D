@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameObject game;
+    private GameController gameController;
+
     private Vector3 newPosition;
     private float prevMousePosition;
     Ray leftRay1;
@@ -16,6 +19,8 @@ public class PlayerController : MonoBehaviour
     Vector3 rightBottomCorner = new Vector3(0, 0.5f, 0);
     private void Start()
     {
+        gameController = game.GetComponent<GameController>();
+
         leftRay1 .direction = Vector3.left;
         leftRay2 .direction = Vector3.left;
         rightRay1.direction = Vector3.right;
@@ -54,6 +59,15 @@ public class PlayerController : MonoBehaviour
 
         transform.position = newPosition;
         prevMousePosition = Input.mousePosition.x;
+    }
+
+    public void OnFinish()
+    {
+        gameController.Win();
+    }
+    public void OnDie()
+    {
+        gameController.Lose();
     }
 
     private Vector3 getClosestPoint(Ray ray1, Ray ray2)
