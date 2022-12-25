@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameObject GM;
+    private GameController gameController;
+
     private Vector3 newPosition;
     private float prevMousePosition;
     Ray leftRay1;
@@ -14,8 +17,16 @@ public class PlayerController : MonoBehaviour
     Vector3 leftTopCorner     = new Vector3(0, 0.5f, 0);
     Vector3 rightTopCorner    = new Vector3(0, 0.5f, 0);
     Vector3 rightBottomCorner = new Vector3(0, 0.5f, 0);
+
+    public void Die()
+    {
+        gameController.Lose();
+    }
+
     private void Start()
     {
+        gameController = GM.GetComponent<GameController>();
+
         leftRay1 .direction = Vector3.left;
         leftRay2 .direction = Vector3.left;
         rightRay1.direction = Vector3.right;
