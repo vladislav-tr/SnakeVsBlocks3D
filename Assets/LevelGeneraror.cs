@@ -7,13 +7,16 @@ public class LevelGeneraror : MonoBehaviour
 {
     public GameObject BlockPrefab;
     public GameObject FoodPrefab;
+    public GameController gameController;
 
     private float segmentLength = 22.32f;
     private float startOffset = 4.3f;
     private float cubeSpace = 1.06f;
+    private System.Random rnd;
 
     void Awake()
     {
+        rnd = new System.Random(gameController.LevelNum);
         for (int i = 0; i < 7; i++)
         {
             GenerateSegment(i);
@@ -32,7 +35,6 @@ public class LevelGeneraror : MonoBehaviour
 
     private void GenerateWall(int segmentNumber)
     {
-        System.Random rnd = new System.Random();
         int smallBlockLine = rnd.Next(5);
 
         for (int i = 0; i < 5; i++)
@@ -47,7 +49,6 @@ public class LevelGeneraror : MonoBehaviour
 
     private void GenerateRow(int rowNumber, int segmentNumber)
     {
-        System.Random rnd = new System.Random();
         for (int i = 0; i < 5; i++)
         {
             Vector3 position = CalculatePosition(i, rowNumber, segmentNumber);
