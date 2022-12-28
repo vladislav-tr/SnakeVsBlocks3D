@@ -12,7 +12,7 @@ public class BlockColorer : MonoBehaviour
         blockRenderer = GetComponent<Renderer>();
         DurabilityComponent = GetComponent<DurabilityIndicator>();
     }
-    private void FixedUpdate()
+    private void Update()
     {
         //https://stackoverflow.com/questions/5731863/mapping-a-numeric-range-onto-another
 

@@ -69,7 +69,7 @@ public class LevelGeneraror : MonoBehaviour
     private void GenerateObject(GameObject prefab, Vector3 position, int durability)
     {
         GameObject jbj = Instantiate(prefab, position, Quaternion.identity, gameObject.transform);
-        DurabilityIndicator cmp = jbj.GetComponent(typeof(DurabilityIndicator)) as DurabilityIndicator;
+        DurabilityIndicator cmp = jbj.GetComponent<DurabilityIndicator>();
         cmp.durability = durability;
     }
 

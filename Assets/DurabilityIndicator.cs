@@ -6,7 +6,7 @@ public class DurabilityIndicator : MonoBehaviour
 {
     public int durability;
     private List<TextMeshPro> Numbers = new List<TextMeshPro>();
-    private void Start()
+    private void Awake()
     {
         TextMeshPro newNumber;
         int numbersCount = transform.childCount;
@@ -16,7 +16,7 @@ public class DurabilityIndicator : MonoBehaviour
             if (newNumber != null) Numbers.Add(newNumber);
         }
     }
-    private void FixedUpdate()
+    private void Update()
     {
         foreach (TextMeshPro number in Numbers)
         {

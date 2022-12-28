@@ -28,6 +28,10 @@ public class PlayerController : MonoBehaviour
         frontRay1.direction = Vector3.forward;
         frontRay2.direction = Vector3.forward;
     }
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0)) prevMousePosition = Input.mousePosition.x; //Fix jumping on first click
+    }
     private void FixedUpdate()
     {
         float cx = transform.position.x;
